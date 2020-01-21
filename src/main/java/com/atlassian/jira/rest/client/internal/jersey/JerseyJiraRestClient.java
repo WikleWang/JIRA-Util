@@ -33,6 +33,7 @@ public class JerseyJiraRestClient implements JiraRestClient {
     private final VersionRestClient versionRestClient;
     private final ProjectRolesRestClient projectRolesRestClient;
     private final ApacheHttpClient client;
+    private final FieldRestClient fieldRestClient;
 
     public JerseyJiraRestClient(URI serverUri, final AuthenticationHandler authenticationHandler) {
         this.baseUri = UriBuilder.fromUri(serverUri).path("/rest/api/latest").build(new Object[0]);
@@ -73,7 +74,7 @@ public class JerseyJiraRestClient implements JiraRestClient {
         this.searchRestClient = new JerseySearchRestClient(this.baseUri, this.client);
         this.versionRestClient = new JerseyVersionRestClient(this.baseUri, this.client);
         this.projectRolesRestClient = new JerseyProjectRolesRestClient(this.baseUri, this.client, serverUri);
-
+        this.fieldRestClient = new JerseyFieldRestClient(this.baseUri, this.client);
     }
 
     @Override
@@ -131,7 +132,10 @@ public class JerseyJiraRestClient implements JiraRestClient {
         return this.client;
     }
 
-
+    @Override
+    public FieldRestClient getFieldRestField() {
+        return this.fieldRestClient;
+    }
 
     private static ApacheHttpClientHandler createDefaultClientHander(DefaultApacheHttpClientConfig config) {
         HttpClient client = new HttpClient(new MultiThreadedHttpConnectionManager());

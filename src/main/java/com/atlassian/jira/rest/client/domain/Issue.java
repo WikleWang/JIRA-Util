@@ -268,7 +268,36 @@ public class Issue extends BasicIssue implements ExpandableResource {
 
     public Map<String,String> toKeyValue() {
         Map<String,String> data = new HashMap<>();
-
+        super(self, key, id);
+        this.summary = summary;
+        this.project = project;
+        this.status = status;
+        this.description = description;
+        this.resolution = resolution;
+        this.expandos = expandos;
+        this.comments = comments;
+        this.attachments = attachments;
+        this.fields = fields;
+        this.issueType = issueType;
+        this.reporter = reporter;
+        this.assignee = assignee;
+        this.creationDate = creationDate;
+        this.updateDate = updateDate;
+        this.dueDate = dueDate;
+        this.transitionsUri = transitionsUri;
+        this.issueLinks = issueLinks;
+        this.votes = votes;
+        this.worklogs = worklogs;
+        this.watchers = watchers;
+        this.fixVersions = fixVersions;
+        this.affectedVersions = affectedVersions;
+        this.components = components;
+        this.priority = priority;
+        this.timeTracking = timeTracking;
+        this.subtasks = subtasks;
+        this.changelog = changelog;
+        this.labels = labels;
+        this.rawObject = rawObject;
 
         return data;
     }
